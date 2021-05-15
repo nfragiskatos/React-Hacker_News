@@ -19,7 +19,7 @@ const Stories = () => {
 							{points} points by <span>{author} | </span> {num_comments} comments
 						</p>
 						<div>
-							<a className="read-link" href={url}>
+							<a className="read-link" target="_blank" rel="noopener noreferrer" href={url}>
 								read more
 							</a>
 							<button className="remove-btn">remove</button>
