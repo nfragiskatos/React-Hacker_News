@@ -6,6 +6,9 @@ const reducer = (state, action) => {
 			return { ...state, isLoading: true };
 			break;
 
+		case SET_STORIES:
+			return { ...state, isLoading: false, hits: action.payload.hits, nbPages: action.payload.nbPages };
+
 		default:
 			throw new Error(`no matching ${action.type} action`);
 			break;
