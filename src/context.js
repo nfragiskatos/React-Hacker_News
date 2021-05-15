@@ -18,6 +18,10 @@ const AppContext = React.createContext();
 const AppProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(reducer, initialState);
 
+	const removeStory = (id) => {
+		dispatch({ type: REMOVE_STORY, payload: id });
+	};
+
 	const fetchStories = async (url) => {
 		dispatch({ type: SET_LOADING });
 
@@ -36,7 +40,7 @@ const AppProvider = ({ children }) => {
 		fetchStories(`${API_ENDPOINT}query=${state.query}&page=${state.page}`);
 	}, []);
 
-	return <AppContext.Provider value={{ ...state }}>{children}</AppContext.Provider>;
+	return <AppContext.Provider value={{ ...state, removeStory }}>{children}</AppContext.Provider>;
 };
 // make sure use
 export const useGlobalContext = () => {
